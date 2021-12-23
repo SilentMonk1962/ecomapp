@@ -4,6 +4,7 @@ import './App.css';
 
 import HomePage from './pages/homepage/homepage.component.jsx';
 import ShopPage from './pages/shop/shop.components';
+import Header from './components/header/header.component';
 const HatsPage =()=>(
   <div>
     <h1>
@@ -14,6 +15,7 @@ const HatsPage =()=>(
 
 function App(){
   return ( <div>
+    <Header/>
     <Routes>
     <Route path = '/' element={<HomePage/>}/>
     <Route path = '/hats' element={<HatsPage/>}/>
