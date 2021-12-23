@@ -14,6 +14,9 @@ const Header = ()=>(
         <div className='options'>
             <Link className='option' to='/shop'>CONTACT</Link>
         </div>
+        <div className='options'>
+            <Link className='option' to='/signin'>SIGNIN</Link>
+        </div>
     </div>
 )
 export default Header
