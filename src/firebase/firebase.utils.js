@@ -2,8 +2,6 @@ import {initializeApp} from 'firebase/app';
 import {getFirestore} from 'firebase/firestore';
 import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 import firebase from 'firebase/compat/app';
-
-
 const firebaseConfig={
     apiKey: "AIzaSyCwLTuLw39ni-lNRmYfh6d4CJdWj90J8t4",
     authDomain: "crwn-db-490ee.firebaseapp.com",
