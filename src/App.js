@@ -28,8 +28,7 @@ class App extends React.Component{
             id:doc.id,
             ...doc.data()
           }
-        });
-        console.log(this.state)        
+        });      
       });
       
   }
