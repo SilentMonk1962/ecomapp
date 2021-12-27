@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import {auth } from '../../firebase/firebase.utils';
+import {connect} from 'react-redux';
 const Header = ({currentUser})=>(
     <div className='header'>
         <Link className ='logo-container'to="/">
@@ -17,6 +18,7 @@ const Header = ({currentUser})=>(
         <div className='options'>
             
             {
+                //checks if current object is true, if yes, then displays SignOut else SignIn
                 currentUser ?
                 <div className='option' onClick={()=>auth.signOut()}>SIGNOUT</div>
                 :
@@ -25,5 +27,9 @@ const Header = ({currentUser})=>(
         </div>
 
     </div>
-)
-export default Header
+);
+//gets the value of the currentUser object from the state and then passes it as prop to the reducer
+const mapStateToProps =state=>({
+    currentUser:state.user.currentUser
+})
+export default connect(mapStateToProps)(Header);
