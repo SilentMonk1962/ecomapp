@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import HomePage from './pages/homepage/homepage.component.jsx';
@@ -44,15 +44,24 @@ class App extends React.Component{
     <Routes>
     <Route path = '/' element={<HomePage/>}/>
     <Route path='/shop' element={<ShopPage/>}/>
-    <Route path = '/signIn' element={<SignInAndSignUpPage/>}/>
+    <Route exact path = '/signIn' element={this.props.currentUser ? (<Navigate replace to ='/'/>):(<SignInAndSignUpPage/>)}/>
     </Routes>
   </div>
   ) }
 };
+const mapStateToProps = ({user})=>({
+  currentUser : user.currentUser
+})
+
+
+
 
 //this is helping us push value of current user to setCurrentUser
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+   mapDispatchToProps
+   )(App);
