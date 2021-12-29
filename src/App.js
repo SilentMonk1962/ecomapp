@@ -40,7 +40,7 @@ class App extends React.Component{
   }
   render(){
   return ( <div>
-    <Header />
+    <Header /> 
     <Routes>
     <Route path = '/' element={<HomePage/>}/>
     <Route path='/shop' element={<ShopPage/>}/>
@@ -56,12 +56,18 @@ const mapStateToProps = ({user})=>({
 
 
 
-//this is helping us push value of current user to setCurrentUser
+//this is helping us push value of current user to setCurrentUser action in userReducer
+//so whenever someone calls setCurrentUser on App then it dispatches this to setCurrentUser with user object into our user.action.js 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
 export default connect(
-  mapStateToProps,
-   mapDispatchToProps
+  mapStateToProps,// to add state as props into the component
+   mapDispatchToProps //this will help update the state 
    )(App);
+
+
+   //if you observe carefully, our header component will not need the user prop. 
+   //it can directly access the props using mapStateToProps function on Header component.jsx
+
