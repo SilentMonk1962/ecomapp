@@ -5,7 +5,12 @@ import './App.css';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import HomePage from './pages/homepage/homepage.component.jsx';
 import ShopPage from './pages/shop/shop.components';
+import CheckoutPage from './pages/checkout/checkout.component';
+
+
 import Header from './components/header/header.component';
+
+
 import { firestore, auth , createUserProfileDocument } from './firebase/firebase.utils';
 import {doc,onSnapshot } from "firebase/firestore";
 import {setCurrentUser} from './redux/user/user.actions';
@@ -45,6 +50,7 @@ class App extends React.Component{
     <Routes>
     <Route path = '/' element={<HomePage/>}/>
     <Route path='/shop' element={<ShopPage/>}/>
+    <Route path ='/checkout' element= {<CheckoutPage/>}/>
     <Route exact path = '/signIn' element={this.props.currentUser ? (<Navigate replace to ='/'/>):(<SignInAndSignUpPage/>)}/>
     </Routes>
   </div>
