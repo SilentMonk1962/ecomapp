@@ -9,7 +9,8 @@ import Header from './components/header/header.component';
 import { firestore, auth , createUserProfileDocument } from './firebase/firebase.utils';
 import {doc,onSnapshot } from "firebase/firestore";
 import {setCurrentUser} from './redux/user/user.actions';
-
+import {selectCurrentUser} from './redux/user/user.selectors';
+import { createStructuredSelector } from 'reselect';
 
 class App extends React.Component{
   unsubscribeFromAuth =null;
@@ -49,8 +50,8 @@ class App extends React.Component{
   </div>
   ) }
 };
-const mapStateToProps = ({user})=>({
-  currentUser : user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser : selectCurrentUser
 })
 
 
